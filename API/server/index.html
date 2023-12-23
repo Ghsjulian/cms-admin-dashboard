@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="stylesheet" href="css/App.css" />
+    <link rel="stylesheet" href="css/Responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <title>Add A New Project | Add Project</title>
+  </head>
+  <body>
+    <div id="root">
+      <div class="main">
+        <h1 class="home-logo">Add New Project</h1>
+        <p>Add Your New Project With Your Fixed Rate.</p>
+      </div>
+      <div class="main">
+        <center>
+          <div class="col">
+            <div id="order-form" class="contact-form">
+              <form id="addProduct">
+                <img id="preview" style="display: none" src="tea.jpg" />
+                <div class="avtar">
+                  <label for="project_image"> + </label>
+                </div>
+                <input
+                  style="display: none"
+                  type="file"
+                  name="project_image"
+                  id="project_image"
+                  accept="images/*"
+                  onchange="loadFile(event)"
+                />
+                <div id="suc-message"></div>
+                <span class="message" style="display: none" id="message"></span>
+                <input
+                  type="text"
+                  placeholder="Enter Project Name"
+                  id="project_name"
+                  name="project_name"
+                />
+                <input
+                  type="url"
+                  placeholder="Enter Project URL"
+                  id="project_url"
+                  name="project_url"
+                />
+                <textarea
+                  type="text"
+                  placeholder="Project Description"
+                  id="project_description"
+                  name="project_description"
+                ></textarea>
+                <button
+                  type="button"
+                  id="update_btn"
+                  name="contact-btn"
+                  onclick="Addproduct()"
+                >
+                  Add Project
+                </button>
+              </form>
+            </div>
+          </div>
+        </center>
+      </div>
+
+      <script>
+        function __ghs(tag) {
+          return document.querySelector(tag);
+        }
+        function Addproduct() {
+          var project_name = __ghs("#project_name").value;
+          var project_url = __ghs("#project_url").value;
+          var project_description = __ghs("#project_description").value;
+          if (project_name == "") {
+            __ghs("#message").classList.add("error");
+            __ghs("#message").style.display = "block";
+            __ghs("#message").textContent = "Enter Project Name!";
+          } else if (project_description == "") {
+            __ghs("#message").classList.add("error");
+            __ghs("#message").style.display = "block";
+            __ghs("#message").textContent = "Enter Project Description!";
+          } else if (project_url == "") {
+            __ghs("#message").classList.add("error");
+            __ghs("#message").style.display = "block";
+            __ghs("#message").textContent = "Enter URL Of Project!";
+          } else {
+            fetch("http://localhost:8000/API/server/functions/addProject.php", {
+              method: "POST",
+              body: new FormData(__ghs("#addProduct")),
+            })
+              .then((res) => {
+                return res.json();
+              })
+              .then((data) => {
+                console.log(data);
+                __ghs("#addProduct").reset();
+                var html = `<div class="suc-message"><i class="bi bi-check-circle"></i>${data.message}</div>`;
+                __ghs("#suc-message").innerHTML = html;
+              });
+            setTimeout(() => {
+              __ghs(".suc-message").style.display = "none";
+            }, 3000);
+          }
+          setTimeout(() => {
+            __ghs("#message").classList.remove("error");
+            __ghs("#message").textContent = "";
+          }, 3000);
+        }
+        var loadFile = function (event) {
+          var output = document.getElementById("preview");
+          output.src = URL.createObjectURL(event.target.files[0]);
+          output.onload = function () {
+            URL.revokeObjectURL(output.src); // free memory
+          };
+          output.style.display = "block";
+        };
+
+        /*
+         *
+         *_______SELECT ALL PROJECTS ______
+         *
+         */
+        function AllProjects() {
+          var formdata = new FormData();
+          formdata.append("select_projects", "__ghs__");
+          fetch("http://localhost:8000/API/server/functions/index.php", {
+            method: "POST",
+            body: formdata,
+          })
+            .then((res) => {
+              return res.json();
+            })
+            .then((data) => {
+              console.log(data);
+            });
+        }
+        //  AllProjects();
+        var data = [
+          {
+            project_id: "1",
+            project_name: "Ghs Julian",
+            project_description: "Cbchhfchhf",
+            project_image: "ghs__36f3e.jpg",
+            project_url: "bcchhfx",
+            project_date: "0000-00-00",
+          },
+          {
+            project_id: "2",
+            project_name: "Ghs Julian",
+            project_description: "Okay",
+            project_image: "ghs__18582.jpg",
+            project_url: "first",
+            project_date: "0000-00-00",
+          },
+        ];
+        for (let i = 0; i < data.length; i++) {
+       console.log(data[i].project_image);
+        }
+      </script>
+    </div>
+  </body>
+</html>

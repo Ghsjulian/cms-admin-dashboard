@@ -1,0 +1,768 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --blue: #009cf1;
+    --green: #00b627;
+}
+--webkit-scroll-bar {
+    display: none;
+    width: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #d9f8ff;
+    color: #4ed8ff;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial;
+    overflow: auto;
+    /*border: .1px solid #01ffff;*/
+}
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+}
+.box1 {
+    background: #fff;
+    grid-area: box1;
+    display: flex;
+    padding: 0.5rem 0.7rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.box2 {
+    background: #fff;
+    grid-area: box2;
+    display: flex;
+    padding: 0.5rem 0.7rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.box1 img,
+.box2 img {
+    border-radius: 5px;
+}
+
+.container {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    margin: 25% 0.2rem;
+    max-width: 900px;
+    padding: 0.7rem;
+    border: 0.1px solid rgb(1, 191, 255);
+    border-radius: 8px;
+    animation: zoom 0.5s linear alternate;
+}
+.container img {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    margin: 0.5rem auto;
+}
+.container h2,
+.grid-container h2 {
+    color: rgb(1, 191, 255);
+    font-weight: 800;
+    font-size: 25px;
+    word-spacing: 3px;
+}
+.container #login {
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+}
+#login input {
+    width: 90%;
+    padding: 0.9rem 1rem;
+    outline: none;
+    background: transparent;
+    border-radius: 8px;
+    border: 1px solid rgb(1, 149, 255);
+    margin: auto;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--green);
+    transition: 0.2s ease-in;
+}
+#login input:focus {
+    outline: none;
+    border: 1.5px solid var(--green);
+}
+#login #login_btn {
+    outline: none;
+    display: flex;
+    justify-content: center;
+    border: none;
+    padding: 0.6rem 0.2rem;
+    color: #fff;
+    font-weight: 700;
+    background: var(--blue);
+    width: 120px;
+    margin: 0.3rem auto;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.5s ease-in-out;
+}
+#login #login_btn:hover {
+    outline: none;
+    border: none;
+    background: #009a1e;
+}
+#login #error {
+    color: #fc3100;
+    border-color: #de4600;
+    border-style: double;
+    border-radius: 8px;
+    padding: 0.7rem 2rem;
+    margin: auto;
+    font-family: Monospace;
+    font-weight: 700;
+    animation: zoom 0.3s linear alternate;
+}
+#login strong {
+    display: flex;
+    color: #3d3d3d;
+    font-weight: 700;
+    font-size: 17px;
+    margin: auto;
+}
+#login strong a {
+    color: #0043c9;
+    margin: 0 0.2rem;
+    text-decoration: none;
+}
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    z-index: 9999;
+    background: #002021;
+    color: #fff;
+    width: 60%;
+    height: 100vh;
+    text-align: center;
+    padding: 0.5rem;
+    transition: 0.3s ease-in;
+}
+.mobile-nav .list-- {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 0.5rem auto;
+    overflow: auto;
+}
+.mobile-nav .list-- {
+    --webkit-scroll-bar {
+        display: none;
+        width: 0;
+    }
+}
+.list-- a {
+    display: flex;
+    gap: 0.6rem;
+    color: #fff;
+    font-weight: 800;
+    font-size: 18px;
+    font-family: Sans-Serif;
+    text-decoration: none;
+    width: 100%;
+    margin: 0.7rem auto;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+.list-- a i {
+    color: #68f7ff;
+    font-weight: 900;
+    font-size: 20px;
+}
+.list-- a:hover {
+    background: #005d60;
+    color: #fff;
+}
+/* Header/Blog Title */
+.header {
+    top: 0;
+    padding: 30px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/2.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    transition: 0.8s ease-in;
+}
+
+.header h1 {
+    font-size: 50px;
+    color: #f0ff38;
+    font-weight: 890;
+}
+.header .intro-- {
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-transform: capitalize;
+    word-spacing: 3px;
+}
+.header .button-- {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 1.7rem auto;
+}
+.header .button-- a {
+    text-decoration: none;
+    font-weight: 900;
+    padding: 0.5rem 1.5rem;
+    border-radius: 12px;
+    transition: 0.3s ease-in;
+    display: flex;
+    gap: 0.3rem;
+}
+.header .button-- #log-in {
+    background: var(--blue);
+    color: #fff;
+}
+.header .button-- #sign-up {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
+.header .button-- #log-in:hover {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.header .button-- #sign-up:hover {
+    background: var(--green);
+    color: #fff;
+    border: none;
+}
+
+.dashboard {
+    width: 100%;
+    padding: 0.5rem;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.header #wlcm {
+    font-weight: 900;
+    font-size: 40px;
+    color: hsl(57.9, 100%, 52.7%);
+}
+.header #err {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 800;
+    word-spacing: 5px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background: #002021;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.8rem 0.7rem;
+}
+
+/* Style the topnav links */
+.topnav .link a {
+    float: left;
+    display: block;
+    color: #ffd;
+    text-align: center;
+    padding: 5px 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 900;
+    transition: 0.3s ease-in;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #1bf6ff;
+    color: black;
+}
+
+.topnav #menu--bar {
+    font-size: 28px;
+    font-weight: 700;
+}
+.topnav #menu--bar .bi-x {
+    color: #ff2808;
+    font-size: 40px;
+    font-weight: 900;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #d04400;
+    border-radius: 50%;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+    float: left;
+    width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 25%;
+    background-color: transparent;
+    padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+    border-radius: 8px;
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+.card h2 {
+    color: var(--blue);
+    font-size: 30px;
+}
+.rooms-- {
+    background-color: white;
+    padding: 4px;
+    margin-top: 5px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+}
+.rooms-- .room {
+    width: 100%;
+    position: relative;
+}
+.room img {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+}
+.room #room-name {
+    margin: 0.7rem auto;
+    color: #363636;
+}
+.room #price-- {
+    position: absolute;
+    top: -8px;
+    right: 0;
+    background: #0ac9ff;
+    border-radius: 8px;
+    padding: 5px 13px;
+    color: #fff;
+    font-weight: 900;
+    font-size: 20px;
+    margin: 0.5rem auto;
+}
+.room .view-group {
+    margin: 0.7rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+.view-group a {
+    margin: 1rem auto;
+    text-decoration: none;
+    display: inline;
+    text-align: center;
+    padding: 5px 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 900;
+    transition: 0.3s ease-in;
+}
+.view-group #view {
+    background: var(--green);
+    color: #ffd;
+}
+.view-group #book {
+    background: var(--blue);
+    color: #ffd;
+}
+
+.card #book-form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+#book-form select {
+    outline: none;
+    padding: 0.7rem 0.9rem;
+    width: 50%;
+    border-radius: 10px;
+    background: transparent;
+}
+#book-form input {
+    border: 1px solid #2a2a2a;
+    outline: none;
+    margin: 0.5rem auto;
+    padding: 1rem 0.9rem;
+    width: 50%;
+    border-radius: 10px;
+}
+
+#book-form input:focus {
+    border: 1px solid var(--green);
+}
+#book-form .date-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0;
+    width: 90%;
+    align-items: center;
+}
+#book-form #start-date {
+    background: transparent;
+    width: 50%;
+    color: #000;
+}
+
+#book-form #end-date {
+    background: transparent;
+    width: 50%;
+    color: #000;
+}
+#book-form #book-btn {
+    margin: 0.3rem auto;
+    display: inline;
+    border: none;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    font-weight: 900;
+    transition: 0.3s ease-in;
+    background: var(--blue);
+    color: #fff;
+}
+#book-form #book-btn:hover {
+    background: var(--green);
+    outline: none;
+    border: none;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* FOODS AND SERVICE*/
+.card .food {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    align-items: center;
+}
+.food .food-content {
+    padding: 0.5rem;
+}
+.food-content img {
+    width: 100%;
+    border-radius: 10px;
+}
+.food-content #description {
+    color: #404040;
+    font-weight: 500;
+    line-height: 1.7rem;
+    font-size: 17px;
+    text-align: left;
+}
+
+/*  ABOUT SECTION  */
+.card .about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.about img {
+    width: 100%;
+}
+.about #description {
+    color: #535353;
+    font-weight: 500;
+    line-height: 1.7rem;
+    font-size: 17px;
+    text-align: left;
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+    margin-top: 20px;
+}
+/*  CLIENT AND POPULAR*/
+.card .client {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.7rem;
+}
+.client img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+.client #description {
+    color: #535353;
+    font-weight: 500;
+    line-height: 1.7rem;
+    font-size: 25px;
+    text-align: center;
+}
+
+/*  FOLLOW AND SOCIAL MEDIA  */
+
+.card .social {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem auto;
+}
+.social a {
+    color: #09dcff;
+    outline: none;
+    text-decoration: none;
+    font-size: 22px;
+    border-radius: 50%;
+    border: 1px solid #32d7ff;
+    padding: 0.3rem;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    text-align: center;
+}
+.social a:hover {
+    background: rgb(0, 219, 204);
+    color: #fff;
+    transition: 0.3s ease-in;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 1600px) {
+    .topnav {
+        padding: 0.7rem 0.8rem;
+    }
+    .topnav #menu--bar {
+        display: none;
+    }
+    .header {
+        margin-top: 0;
+    }
+    .header .intro-- {
+        width: 40%;
+    }
+    .mobile-nav {
+        display: none;
+    }
+
+    .date-area {
+        width: 50%;
+        padding: 1rem;
+    }
+    .client img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+    .container {
+        width: 50%;
+        padding: 0.8rem;
+    }
+    .grid-container {
+        margin-top: 5%;
+    }
+    .box1 img,
+    .box2 img {
+        width: 350px;
+        height: 220px;
+        object-fit: fill;
+        margin: 0.5rem auto;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .topnav #menu--bar {
+        display: none;
+    }
+    .header {
+        margin-top: 0;
+    }
+    .mobile-nav {
+        display: none;
+    }
+    .container {
+        width: 50%;
+        padding: 0.8rem;
+    }
+    .box1 img,
+    .box2 img {
+        width: 350px;
+        height: 220px;
+        object-fit: fill;
+        margin: 0.5rem auto;
+    }
+    .grid-container {
+        margin-top: 10%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .leftcolumn,
+    .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+    .topnav #menu--bar {
+        display: block;
+    }
+    .topnav .link a {
+        display: none;
+        float: none;
+        width: 100%;
+    }
+    .header {
+        margin-top: 0;
+    }
+    .container {
+        width: 60%;
+        padding: 0.8rem;
+    }
+    .box1 img,
+    .box2 img {
+        width: 350px;
+        height: 220px;
+        object-fit: fill;
+        margin: 0.5rem auto;
+    }
+    .grid-container {
+        margin-top: 15%;
+    }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .topnav #menu--bar {
+        display: block;
+    }
+    .topnav .link a {
+        display: none;
+        float: none;
+        width: 100%;
+    }
+    .header {
+        margin-top: 15%;
+    }
+    .header h1 {
+        font-size: 30px;
+    }
+    .header .intro-- {
+        width: 100%;
+    }
+    .rooms-- {
+        flex-direction: column;
+    }
+    .room img {
+        width: 100%;
+    }
+    #book-form select {
+        width: 90%;
+    }
+    #book-form input {
+        width: 90%;
+    }
+    #book-form #start-date {
+        background: transparent;
+        width: 100%;
+    }
+
+    #book-form #end-date {
+        background: transparent;
+        width: 100%;
+    }
+    .container {
+        width: 95%;
+        padding: 0.5rem;
+    }
+
+    .grid-container {
+        margin-top: 15%;
+        display: flex;
+        flex-direction: column;
+    }
+    .box1 img,
+    .box2 img {
+        width: 340px;
+        height: 220px;
+        object-fit: fill;
+        margin: 0.5rem auto;
+    }
+}
